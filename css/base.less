@@ -1,0 +1,196 @@
+#colors(){
+    @green: #24c924;
+    @darkGreen: #198f19;
+    @lightBlue: #0ac;
+    @darkLightBlue: #1755B4;
+    @darkBlue: #006;
+    @bodyBackground: #333;
+    @menuBackground: #392a4e;
+    @borderMenu: solid #aaa 1px;
+    @gray: #888888;
+    @lightGray: #aaa;
+    @white: #dcdcdc;
+    @darkYellow: #929253;
+    @darkOrange: #b4811a;
+    @defaultRed: #af1b1b;
+    @defaultGreen: #1a991a;
+    @defaultOpacity: .8;
+    @selectedItem: 2px #caca38 solid;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #colors[@bodyBackground];
+}
+
+main {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow-y: hidden;
+}
+
+.button, input#name, #money{
+    font-size: 1rem;
+	padding: .5rem;
+	cursor: pointer;
+}
+
+label, img, figcaption{
+    color: #colors[@white];
+}
+
+li{
+	list-style: none;
+}
+
+input.button{
+	border: none;
+}
+
+.button:hover{
+    opacity: #colors[@defaultOpacity];
+}
+
+.titles{
+    cursor: default;
+    text-align: center;
+    width: 18.34375rem;
+}
+
+.generical-menu{
+    background-color: #colors[@menuBackground];
+    height: 85%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: .5rem;
+
+    border: #colors[@borderMenu];
+  	padding: 2rem;
+
+    #logo{
+        color: #colors[@white];
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    h2{
+        color: #colors[@white];
+    }
+}
+
+.yellow-buttons{
+    background-color: #colors[@darkYellow];
+    color: #colors[@white];
+}
+
+.generical-button-conteiner{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    width: 100%;
+
+    button{
+        .yellow-buttons();
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+}
+
+.not-active{
+    position: absolute;
+    z-index: -10;
+
+    opacity: 0;
+    visibility: hidden;
+
+    animation-name: closeModal;
+	animation-duration: .2s;
+}
+
+.active{
+    opacity: 1;
+    visibility: visible;
+
+    animation-name: openModal;
+	animation-duration: .2s;
+}
+
+/* Estilos padrão dos modais */
+
+.modal-conteiner{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100vw;
+	height: 100vh;
+	background-color: #00000076;	
+}
+
+/* Keyframes da animação de abertura/fechamento dos modais */
+
+@keyframes openModal{
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	to {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+@keyframes closeModal{
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+/* ######################################################## */
+
+.modal{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 1rem;
+
+	background-color: #colors[@menuBackground];
+    color: #colors[@white];
+	
+    border: #colors[@borderMenu];
+	border-radius: 10%;
+	padding: 2rem;
+}
+
+/* ################################ */
