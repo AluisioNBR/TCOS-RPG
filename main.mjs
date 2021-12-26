@@ -1,3 +1,8 @@
+import { Money } from "./script/player.mjs"
+import { XP } from "./script/player.mjs"
+import { Modal } from "./script/modal.mjs"
+import { Attributes } from "./script/attributes.mjs"
+import { ChangeAttributesValues } from "./script/changeAttributesValues.mjs"
 var Game = {
     init: function () {
         Game.firstUpdateMoney();
@@ -143,15 +148,34 @@ var Game = {
         ChangeAttributesValues.int.on('change', ChangeAttributesValues.intChange);
     },
     buttonsInit: function () {
-        ButtonsHTML.newGameButton.on('click', Modal.NewGame.openNewGame);
-        ButtonsHTML.loadGameButton.on('click', Modal.NewGame.openLoadGame);
+        $('#new-game-button').on('click', Modal.NewGame.openNewGame);
+        $('#load-game-button').on('click', Modal.NewGame.openLoadGame);
         Modal.NewGame.closeLoadStoped.on('click', Modal.NewGame.closeLoadStop);
-        ButtonsHTML.returnToGameMenu.on('click', Modal.GameMenu.open);
+        $('#returnToGameMenu').on('click', Modal.GameMenu.open);
+        $('#newGameConfirmYes').on('click', function () { Modal.NewGame.openNameSelection(true, false, true); });
+        $('#newGameConfirmNo').on('click', function () { Modal.NewGame.openNameSelection(false, true); });
         Modal.NewGame.confirmNameButton.on('click', Modal.NewGame.openBreedSelector);
+        $('#humanSelection').on('click', function () { Modal.NewGame.openClassSelector('Humano(a)'); });
+        $('#elfSelection').on('click', function () { Modal.NewGame.openClassSelector('Elfo(a)'); });
+        $('#dwarfSelection').on('click', function () { Modal.NewGame.openClassSelector('Anão(ã)'); });
+        $('#hobbitSelection').on('click', function () { Modal.NewGame.openClassSelector('Hobbit'); });
+        $('#fighterSelection').on('click', function () { Modal.NewGame.openInitialMenu('Lutador(a)'); });
+        $('#warriorSelection').on('click', function () { Modal.NewGame.openInitialMenu('Guerreiro(a)'); });
+        $('#archerSelection').on('click', function () { Modal.NewGame.openInitialMenu('Arqueiro(a)'); });
+        $('#wizardSelection').on('click', function () { Modal.NewGame.openInitialMenu('Mago(a)'); });
+        $('#changeToStatus').on('click', Modal.Person.Status.open);
+        $('#close-button').on('click', Modal.Person.close);
+        $('#changeToPerson').on('click', Modal.Person.Status.close);
+        $('#confirm-button').on('click', Modal.confirmUpdate.open);
+        $('#confirm-name').on('click', function () { Modal.GameMenu.close('name'); });
+        $('#confirm-update').on('click', function () { Modal.confirmUpdate.close('yes'); });
+        $('#cancel-update').on('click', Modal.confirmUpdate.close);
         Modal.NewGame.closeNameInvalidationButton.on('click', Modal.NewGame.closeNameInvalidation);
         Modal.Status.button.on('dblclick', Modal.Status.openClose);
         Modal.Status.button.on('click', Modal.Status.select);
         Modal.Status.move();
+        $('#personButton').on('click', Modal.Person.open);
+        $('.saveButton').on('click', Modal.saveData.open);
         Modal.saveData.closeSave.on('click', Modal.saveData.close);
     }
 };

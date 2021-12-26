@@ -1,3 +1,7 @@
+import { Player } from "./player.mjs"
+import { Money } from "./player.mjs"
+import { XP } from "./player.mjs"
+import { Attributes } from "./attributes.mjs"
 var Modal = {
     saveData: {
         modal: $('#saveDataModal'),
@@ -251,3 +255,4 @@ var Modal = {
         }
     }
 };
+export { Modal }

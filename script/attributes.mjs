@@ -1,3 +1,7 @@
+import { XP } from './player.mjs'
+import { Money } from './player.mjs'
+import { ChangeAttributesValues } from './changeAttributesValues.mjs'
+import { Modal } from './modal.mjs'
 var Attributes = {
     str: 3,
     vit: 3,
@@ -120,3 +124,4 @@ var Attributes = {
         Modal.confirmUpdate.close();
     }
 };
+export { Attributes }

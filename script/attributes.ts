@@ -1,3 +1,8 @@
+// import { XP } from './player.mjs'
+// import { Money } from './player.mjs'
+// import { ChangeAttributesValues } from './changeAttributesValues.mjs'
+// import { Modal } from './modal.mjs'
+
 const Attributes = {
     str: 3,
     vit: 3,
@@ -150,3 +155,5 @@ const Attributes = {
         Modal.confirmUpdate.close()
     }
 }
+
+// export { Attributes }

@@ -1,3 +1,5 @@
+// import { Attributes } from './attributes.mjs'
+
 const ChangeAttributesValues = {
     str: $('#str'),
     vit: $('#vit'),
@@ -85,3 +87,5 @@ const ChangeAttributesValues = {
         ChangeAttributesValues.colorChange(ChangeAttributesValues.int.val(), $('#indicator-int'), 4)
     }
 }
+
+// export { ChangeAttributesValues }

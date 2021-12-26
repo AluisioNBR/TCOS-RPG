@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Core of Shadows</title>
+		<link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
 
         <!-- Less -->
         <link rel="stylesheet/less" type="text/css" href="styles.less" />
@@ -13,15 +14,8 @@
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.js" defer></script>
 
-        <!-- Scripts -->
-        <script src="./script/player.js" defer></script>
-		<script src="./script/money.js" defer></script>
-		<script src="./script/xp.js" defer></script>
-		<script src="./script/attributes.js" defer></script>
-		<script src="./script/changeAttributesValues.js" defer></script>
-        <script src="./script/modal.js" defer></script>
-        <script src="./script/buttonsHTML.js" defer></script>
-        <script src="./script/main.js" defer></script>
+        <!-- Script -->
+        <script src="./main.mjs" type="module" defer></script>
     </head>
     <body>
         <header>
@@ -54,7 +48,7 @@
 
         <main>
             <div id="game-menu" class="active generical-menu">
-                <img src="" alt="The Core of Shadows" id="logo">
+                <img title="The Core of Shadows" src="./img/logo.png" alt="The Core of Shadows" class="logo">
                 
                 <div id="game-buttons-conteiner" class="generical-button-conteiner">
                     <button class="button" id="new-game-button">Novo Jogo</button>
@@ -73,8 +67,8 @@
                     </p>
         
                     <div>
-                        <button id="newGameConfirmYes" onclick="Modal.NewGame.openNameSelection(true, false, true)" class="button">Sim</button>
-                        <button id="newGameConfirmNo" onclick="Modal.NewGame.openNameSelection(false, true)" class="button">Não</button>
+                        <button id="newGameConfirmYes" class="button">Sim</button>
+                        <button id="newGameConfirmNo" class="button">Não</button>
                     </div>
                 </div>
             </div>
@@ -90,13 +84,13 @@
             </div>
 
             <div id="initial-menu" class="not-active generical-menu">
-                <img src="" alt="The Core of Shadows" id="logo">
+                <img title="The Core of Shadows" src="./img/logo.png" alt="The Core of Shadows" class="logo">
                 
                 <div id="initial-buttons-conteiner" class="generical-button-conteiner">
                     <button class="button">Quests</button>
-                    <button class="button" onclick="Modal.Person.open()">Personagem</button>
+                    <button class="button" id="personButton">Personagem</button>
                     <button class="button">Loja</button>
-                    <button class="button" onclick="Modal.saveData.open()">Salvar</button>
+                    <button class="button saveButton">Salvar</button>
                     <button class="button" id="returnToGameMenu">Voltar</button>
                 </div>
             </div>
@@ -110,7 +104,7 @@
                     <label for="name" hidden>Nome: </label>
                     <input class="button" min="5" max="10" type="text" name="name" id="nameInput" placeholder="Nickname (min: 5 | máx: 10)">
         
-                    <button id="confirm-name" class="button" onclick="Modal.GameMenu.close('name')">Enviar</button>
+                    <button id="confirm-name" class="button">Enviar</button>
                 </div>
             </div>
         
@@ -136,10 +130,10 @@
                 </h2>
         
                 <div id="breed-buttons">
-                    <button onclick="Modal.NewGame.openClassSelector('Humano(a)')" class="button">Humano(a)</button>
-                    <button onclick="Modal.NewGame.openClassSelector('Elfo(a)')" class="button">Elfo(a)</button>
-                    <button onclick="Modal.NewGame.openClassSelector('Anão(ã)')" class="button">Anão(ã)</button>
-                    <button onclick="Modal.NewGame.openClassSelector('Hobbit')" class="button">Hobbit</button>
+                    <button id="humanSelection" class="button">Humano(a)</button>
+                    <button id="elfSelection" class="button">Elfo(a)</button>
+                    <button id="dwarfSelection" class="button">Anão(ã)</button>
+                    <button id="hobbitSelection" class="button">Hobbit</button>
                 </div>
             </div>
         
@@ -149,28 +143,28 @@
                 </h2>
         
                 <div id="class-buttons">
-                    <button onclick="Modal.NewGame.openInitialMenu('Lutador(a)')" class="button">
+                    <button id="fighterSelection" class="button">
                         <figure>
                             <img src="./img/blue-glove.png" alt="Luva inicial">
                             <figcaption>Lutador(a)</figcaption>
                         </figure>
                     </button>
                     
-                    <button onclick="Modal.NewGame.openInitialMenu('Guerreiro(a)')" class="button">
+                    <button id="warriorSelection" class="button">
                         <figure>
                             <img src="./img/short-sword.png" alt="Espada Curta">
                             <figcaption>Guerreiro(a)</figcaption>
                         </figure>
                     </button>
         
-                    <button onclick="Modal.NewGame.openInitialMenu('Arqueiro(a)')" class="button">
+                    <button id="archerSelection" class="button">
                         <figure>
                             <img src="./img/bow-and-arrow.png" alt="Arco Simples">
                             <figcaption>Arqueiro(a)</figcaption>
                         </figure>
                     </button>
         
-                    <button onclick="Modal.NewGame.openInitialMenu('Mago(a)')" class="button">
+                    <button id="wizardSelection" class="button">
                         <figure>
                             <img src="./img/staff-basic.png" alt="Cajado Básico">
                             <figcaption>Mago(a)</figcaption>
@@ -387,8 +381,8 @@
 				</div>
 
 				<div>
-					<button class="button transition" id="changeToStatus" onclick="Modal.Person.Status.open()">Status</button>
-					<button class="button redButton" id="close-button" onclick="Modal.Person.close()">Fechar</button>
+					<button class="button transition" id="changeToStatus">Status</button>
+					<button class="button redButton" id="close-button">Fechar</button>
 				</div>
             </div>
 
@@ -445,10 +439,10 @@
 
 				<div id="statusCard-buttons-conteiner">
 					<div>
-						<button class="button transition" id="changeToPerson" onclick="Modal.Person.Status.close()">Voltar</button>
-						<button class="button greenButton" id="confirm-button" onclick="Modal.confirmUpdate.open()">Confirmar Aprimoramento</button>
+						<button class="button transition" id="changeToPerson">Voltar</button>
+						<button class="button greenButton" id="confirm-button">Confirmar Aprimoramento</button>
 					</div>
-					<button class="button" id="save-button2" onclick="Modal.saveData.open()">Salvar</button>
+					<button class="button saveButton" id="save-button2">Salvar</button>
 				</div>
 			</div>
 			
@@ -463,8 +457,8 @@
 					</p>
 		
 					<div>
-						<button class="button greenButton" id="confirm-update" onclick="Modal.confirmUpdate.close('yes')">Confirmar</button>
-						<button class="button redButton" id="cancel-update" onclick="Modal.confirmUpdate.close()">Cancelar</button>
+				<button class="button greenButton" id="confirm-update">Confirmar</button>
+						<button class="button redButton" id="cancel-update">Cancelar</button>
 					</div>
 				</div>
 			</div>
