@@ -1,0 +1,90 @@
+#store-button-conteiner{
+    gap: .1rem;
+    flex-direction: row;
+    overflow-x: auto;
+    height: 4.5rem;
+
+    button{
+        font-size: 1rem;
+    }
+}
+
+#close-store-button, #close-itensDetails{
+    background-color: #colors[@defaultRed];
+    color: #colors[@white];
+    border: none;
+}
+
+#products4sale{
+    height: 332px;
+    overflow-x: auto;
+
+    div{
+        display: flex;
+        justify-content: flex-start;
+
+        margin: 0 .2rem;
+
+        .column{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+    }
+}
+
+.product{
+    width: 120px;
+    height: 162px;
+    background-color: #colors[@white];
+    padding: 1.5rem;
+    overflow: hidden;
+
+    figcaption, img{
+        color: #colors[@bodyBackground];
+        font-size: .9rem;
+        text-align: center;
+
+        width: 100%;
+    }
+}
+
+#itensDetails{
+    .modal{
+        width: 35%;
+        height: 80%;
+        img{
+            width: 64px;
+            height: 64px;
+        }
+
+        @media(max-width: 800px){
+            width: 50%;
+            height: 70%;
+        }
+        
+        @media(max-width: 720px){
+            width: 85%;
+            height: 65%;
+        }
+    }
+}
+
+#coastDetails{
+    width: 50%;
+    border: none;
+
+    color: inherit;
+    background-color: inherit;
+}
+
+#buyItem{
+    color: #colors[@white];
+    background-color: #colors[@defaultGreen];
+    border: none;
+}
+
+#close-buyMsg{
+    .yellow-buttons();
+    font-size: 1rem;
+}

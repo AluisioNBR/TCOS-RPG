@@ -3,12 +3,14 @@ import { XP } from "./script/player.mjs"
 import { Modal } from "./script/modal.mjs"
 import { Attributes } from "./script/attributes.mjs"
 import { ChangeAttributesValues } from "./script/changeAttributesValues.mjs"
+import { Catalog } from "./script/catalog.mjs"
 var Game = {
     init: function () {
         Game.firstUpdateMoney();
         Game.firstUpdateXP();
         Game.firstUpdateAttributes();
         Game.initChange();
+        Game.productRender();
         Game.buttonsInit();
     },
     firstUpdateMoney: function () {
@@ -147,6 +149,44 @@ var Game = {
         ChangeAttributesValues.dex.on('change', ChangeAttributesValues.dexChange);
         ChangeAttributesValues.int.on('change', ChangeAttributesValues.intChange);
     },
+    productRender: function () {
+        var iArray = [
+            Catalog.Weapons,
+            Catalog.Armors,
+            Catalog.Potions,
+            Catalog.Cards
+        ];
+        var conteiners = [
+            Modal.weapons.conteiner,
+            Modal.armors.conteiner,
+            Modal.potions.conteiner,
+            Modal.cards.conteiner
+        ];
+        var _loop_1 = function (i) {
+            var newColumn = void 0;
+            var item = void 0;
+            var _loop_2 = function (product) {
+                if (conteiners[i].is(':empty') || item == 2) {
+                    newColumn = $('<div />').addClass('column');
+                    conteiners[i].append(newColumn);
+                    item = 0;
+                }
+                var imgDetails = $('<figure />');
+                imgDetails.append($('<img />').attr('src', "" + iArray[i]["" + product].getImg()).attr('alt', "" + iArray[i]["" + product].getName()));
+                imgDetails.append($('<figcaption />').html(iArray[i]["" + product].getName() + "<br>" + iArray[i]["" + product].getPrice() + " coins"));
+                var newProduct = $('<div />').addClass('product').addClass('button').append(imgDetails);
+                newProduct.on('click', function () { Modal.itensDetails.open("item-" + iArray[i]["" + product].getId()); });
+                newColumn.append(newProduct);
+                item++;
+            };
+            for (var product in iArray[i]) {
+                _loop_2(product);
+            }
+        };
+        for (var i = 0; i < iArray.length; i++) {
+            _loop_1(i);
+        }
+    },
     buttonsInit: function () {
         $('#new-game-button').on('click', Modal.NewGame.openNewGame);
         $('#load-game-button').on('click', Modal.NewGame.openLoadGame);
@@ -175,6 +215,15 @@ var Game = {
         Modal.Status.button.on('click', Modal.Status.select);
         Modal.Status.move();
         $('#personButton').on('click', Modal.Person.open);
+        Modal.Store.openButton.on('click', Modal.Store.open);
+        Modal.Store.closeButton.on('click', Modal.Store.close);
+        Modal.weapons.button.on('click', Modal.weapons.open);
+        Modal.armors.button.on('click', Modal.armors.open);
+        Modal.potions.button.on('click', Modal.potions.open);
+        Modal.cards.button.on('click', Modal.cards.open);
+        Modal.buyMsg.openButton.on('click', Modal.buyMsg.open);
+        Modal.buyMsg.closeButton.on('click', Modal.buyMsg.close);
+        $('#close-itensDetails').on('click', Modal.itensDetails.close);
         $('.saveButton').on('click', Modal.saveData.open);
         Modal.saveData.closeSave.on('click', Modal.saveData.close);
     }

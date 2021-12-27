@@ -2,6 +2,8 @@ import { Player } from "./player.mjs"
 import { Money } from "./player.mjs"
 import { XP } from "./player.mjs"
 import { Attributes } from "./attributes.mjs"
+import { Catalog } from "./catalog.mjs"
+import { Item } from "./catalog.mjs"
 var Modal = {
     saveData: {
         modal: $('#saveDataModal'),
@@ -220,7 +222,7 @@ var Modal = {
         }
     },
     confirmUpdate: {
-        element: $('#confirmUpdatePopUp'),
+        element: $('#confirmUpdateModal'),
         confirmButton: $('#confirm-update'),
         confirmMsg: $('#confirm-text'),
         costMsg: $('#cost'),
@@ -252,6 +254,161 @@ var Modal = {
                 if (Modal.confirmUpdate.confirmButton.hasClass('not-active'))
                     Modal.confirmUpdate.confirmButton.removeClass('not-active');
             }
+        }
+    },
+    Store: {
+        conteiner: $('#store-conteiner'),
+        openButton: $('#storeButton'),
+        closeButton: $('#close-store-button'),
+        open: function () {
+            Modal.InitialMenu.close();
+            Modal.Store.conteiner.removeClass('not-active');
+            Modal.Store.conteiner.addClass('active');
+        },
+        close: function () {
+            Modal.InitialMenu.open();
+            Modal.Store.conteiner.removeClass('active');
+            Modal.Store.conteiner.addClass('not-active');
+        }
+    },
+    weapons: {
+        conteiner: $('#weapons-sale'),
+        button: $('#weapons-view-button'),
+        open: function () {
+            if (Modal.weapons.conteiner.hasClass('not-active')) {
+                Modal.weapons.conteiner.removeClass('not-active');
+                Modal.weapons.conteiner.addClass('active');
+                Modal.armors.close();
+                Modal.potions.close();
+                Modal.cards.close();
+            }
+        },
+        close: function () {
+            if (Modal.weapons.conteiner.hasClass('active')) {
+                Modal.weapons.conteiner.removeClass('active');
+                Modal.weapons.conteiner.addClass('not-active');
+            }
+        }
+    },
+    armors: {
+        conteiner: $('#armor-sale'),
+        button: $('#armors-view-button'),
+        open: function () {
+            if (Modal.armors.conteiner.hasClass('not-active')) {
+                Modal.armors.conteiner.removeClass('not-active');
+                Modal.armors.conteiner.addClass('active');
+                Modal.weapons.close();
+                Modal.potions.close();
+                Modal.cards.close();
+            }
+        },
+        close: function () {
+            if (Modal.armors.conteiner.hasClass('active')) {
+                Modal.armors.conteiner.removeClass('active');
+                Modal.armors.conteiner.addClass('not-active');
+            }
+        }
+    },
+    potions: {
+        conteiner: $('#potions-sale'),
+        button: $('#potions-view-button'),
+        open: function () {
+            if (Modal.potions.conteiner.hasClass('not-active')) {
+                Modal.potions.conteiner.removeClass('not-active');
+                Modal.potions.conteiner.addClass('active');
+                Modal.armors.close();
+                Modal.weapons.close();
+                Modal.cards.close();
+            }
+        },
+        close: function () {
+            if (Modal.potions.conteiner.hasClass('active')) {
+                Modal.potions.conteiner.removeClass('active');
+                Modal.potions.conteiner.addClass('not-active');
+            }
+        }
+    },
+    cards: {
+        conteiner: $('#cards-sale'),
+        button: $('#cards-view-button'),
+        open: function () {
+            if (Modal.cards.conteiner.hasClass('not-active')) {
+                Modal.cards.conteiner.removeClass('not-active');
+                Modal.cards.conteiner.addClass('active');
+                Modal.armors.close();
+                Modal.potions.close();
+                Modal.weapons.close();
+            }
+        },
+        close: function () {
+            if (Modal.cards.conteiner.hasClass('active')) {
+                Modal.cards.conteiner.removeClass('active');
+                Modal.cards.conteiner.addClass('not-active');
+            }
+        }
+    },
+    itensDetails: {
+        conteiner: $('#itensDetails'),
+        button: $('#close-itensDetails'),
+        open: function (itemId) {
+            if (Modal.itensDetails.conteiner.hasClass('not-active')) {
+                Modal.itensDetails.conteiner.removeClass('not-active');
+                Modal.itensDetails.conteiner.addClass('active');
+                var id = Number(itemId.split('-')[1]);
+                Modal.itensDetails.addItemDetais(id);
+            }
+        },
+        close: function () {
+            if (Modal.itensDetails.conteiner.hasClass('active')) {
+                Modal.itensDetails.conteiner.removeClass('active');
+                Modal.itensDetails.conteiner.addClass('not-active');
+            }
+        },
+        addItemDetais: function (id) {
+            var selectedProduct;
+            {
+                var iArray = [
+                    Catalog.Weapons,
+                    Catalog.Armors,
+                    Catalog.Potions,
+                    Catalog.Cards
+                ];
+                for (var i = 0; i < iArray.length; i++) {
+                    for (var product in iArray[i]) {
+                        if (iArray[i]["" + product].getId() == id) {
+                            selectedProduct = iArray[i]["" + product];
+                            break;
+                        }
+                    }
+                    if (selectedProduct != undefined)
+                        break;
+                }
+            }
+            Modal.buyMsg.selectedProduct = selectedProduct;
+            $('#itensDetails > div > h2').text(selectedProduct.getName());
+            $('#itensDetails > div > img').attr('src', "" + selectedProduct.getImg()).attr('alt', "" + selectedProduct.getName());
+            $('#coastDetails').val(selectedProduct.getPrice() + " coins");
+            $('#itensDetails > div > p').text(selectedProduct.getDescription());
+        }
+    },
+    buyMsg: {
+        conteiner: $('#buyMsg'),
+        openButton: $('#buyItem'),
+        closeButton: $('#close-buyMsg'),
+        selectedProduct: new Item('undefined', 0, '', 0),
+        open: function () {
+            Modal.itensDetails.close();
+            var buy = Modal.buyMsg.selectedProduct.buy();
+            if (buy == undefined)
+                $('#buyMsg > div > h2').text("Não foi possível realizar a compra!");
+            else
+                $('#buyMsg > div > h2').text("Compra realizada com sucesso!");
+            Modal.buyMsg.conteiner.removeClass('not-active');
+            Modal.buyMsg.conteiner.addClass('active');
+        },
+        close: function () {
+            Modal.buyMsg.conteiner.removeClass('active');
+            Modal.buyMsg.conteiner.addClass('not-active');
         }
     }
 };

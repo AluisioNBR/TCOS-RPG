@@ -89,7 +89,7 @@
                 <div id="initial-buttons-conteiner" class="generical-button-conteiner">
                     <button class="button">Quests</button>
                     <button class="button" id="personButton">Personagem</button>
-                    <button class="button">Loja</button>
+                    <button class="button" id="storeButton">Loja</button>
                     <button class="button saveButton">Salvar</button>
                     <button class="button" id="returnToGameMenu">Voltar</button>
                 </div>
@@ -445,8 +445,35 @@
 					<button class="button saveButton" id="save-button2">Salvar</button>
 				</div>
 			</div>
+
+			<div id="store-conteiner" class="not-active generical-menu">
+				<h2 class="titles">
+					Loja
+				</h2>
+		
+				<div id="store-button-conteiner" class="generical-button-conteiner">
+					<button class="button" id="weapons-view-button">Armas</button>
+					<button class="button" id="armors-view-button">Armaduras</button>
+					<button class="button" id="potions-view-button">Poções</button>
+					<button class="button" id="cards-view-button">Cards</button>
+				</div>
+		
+				<div id="products4sale">
+					<div id="weapons-sale" class="active"></div>
+		
+					<div id="armor-sale" class="not-active"></div>
+		
+					<div id="potions-sale" class="not-active"></div>
+					
+					<div id="cards-sale" class="not-active"></div>
+				</div>
+		
+				<button id="close-store-button" class="button">
+					Fechar
+				</button>
+			</div>
 			
-			<div class="modal-conteiner not-active" id="confirmUpdatePopUp">
+			<div class="modal-conteiner not-active" id="confirmUpdateModal">
 				<div class="modal">
 					<p id="confirm-text">
 						Deseja confirmar o aprimoramento ?
@@ -460,6 +487,37 @@
 				<button class="button greenButton" id="confirm-update">Confirmar</button>
 						<button class="button redButton" id="cancel-update">Cancelar</button>
 					</div>
+				</div>
+			</div>
+
+			<div class="modal-conteiner not-active" id="itensDetails">
+				<div class="modal">
+					<h2>
+						Nome do Item
+					</h2>
+
+					<img src="" alt="Item">
+
+					<p>
+						Descrição do Item
+					</p>
+
+					<div>
+						<label for="coast">Custo:</label>
+						<input type="text" name="coast" id="coastDetails" readonly>
+					</div>
+
+					<div>
+						<button class="button" id="buyItem">Comprar</button>
+						<button class="button" id="close-itensDetails">Fechar</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-conteiner not-active" id="buyMsg">
+				<div class="modal">
+					<h2>Confirmação</h2>
+					<button class="button" id="close-buyMsg">Fechar</button>
 				</div>
 			</div>
         
