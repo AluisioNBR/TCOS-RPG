@@ -1,0 +1,115 @@
+@import 'base.css';
+.yellow-buttons {
+  background-color: #929253;
+  color: #dcdcdc;
+}
+#basic-informations {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#basic-informations div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 102px;
+}
+#basic-informations div input {
+  text-align: center;
+  width: 80%;
+}
+#inventory {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 315.016px;
+  overflow-x: auto;
+}
+.slot,
+.slot figure img {
+  width: 64px;
+  height: 64px;
+}
+.slot {
+  margin: 0.2rem;
+  border: solid #aaa 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#status h4,
+#status .progress-bar-value {
+  color: #dcdcdc;
+}
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.progress-bar {
+  -webkit-appearance: none;
+  background: #aaa;
+  outline: none;
+  width: 80%;
+  height: 10px;
+  border-radius: 0px;
+}
+.progress-bar::-webkit-slider-thumb {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 12px;
+  border-radius: 0%;
+  background: #888888;
+}
+.progress-bar-value {
+  cursor: default;
+  text-align: center;
+  font-size: 1rem;
+  width: 15%;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+}
+#statusCard-buttons-conteiner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.transition {
+  color: #dcdcdc;
+  background-color: #b4811a;
+  border: none;
+}
+.greenButton,
+#save-button2 {
+  color: #dcdcdc;
+  background-color: #198f19;
+  border: none;
+}
+#save-button2 {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+#save-button2:hover {
+  background-color: #b4811a;
+}
+.redButton {
+  color: #dcdcdc;
+  background-color: #af1b1b;
+  border: none;
+}
+#saveDataPopUp .modal {
+  padding: 4rem 2rem;
+}
+/* Classes de Cores Dinâmicas para o JS */
+#status .onUp {
+  color: #1a991a;
+}
+#status .onDown {
+  color: #af1b1b;
+}

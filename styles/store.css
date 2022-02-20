@@ -1,0 +1,84 @@
+@import 'base.css';
+.yellow-buttons {
+  background-color: #929253;
+  color: #dcdcdc;
+}
+#store-button-conteiner {
+  gap: 0.1rem;
+  flex-direction: row;
+  overflow-x: auto;
+  height: 4.5rem;
+}
+#store-button-conteiner button {
+  font-size: 1rem;
+}
+#close-store-button,
+#close-itensDetails {
+  background-color: #af1b1b;
+  color: #dcdcdc;
+  border: none;
+}
+#products4sale {
+  height: 332px;
+  overflow-x: auto;
+}
+#products4sale div {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0.2rem;
+}
+#products4sale div .column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.product {
+  width: 120px;
+  height: 162px;
+  background-color: #dcdcdc;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+.product figcaption,
+.product img {
+  color: #333;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}
+#itensDetails .modal {
+  width: 35%;
+  height: 80%;
+}
+#itensDetails .modal img {
+  width: 64px;
+  height: 64px;
+}
+@media (max-width: 800px) {
+  #itensDetails .modal {
+    width: 50%;
+    height: 70%;
+  }
+}
+@media (max-width: 720px) {
+  #itensDetails .modal {
+    width: 85%;
+    height: 65%;
+  }
+}
+#coastDetails {
+  width: 50%;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+}
+#buyItem {
+  color: #dcdcdc;
+  background-color: #1a991a;
+  border: none;
+}
+#close-buyMsg {
+  background-color: #929253;
+  color: #dcdcdc;
+  font-size: 1rem;
+}

@@ -1,3 +1,30 @@
+@import './base.css';
+
+#colors(){
+    @green: #24c924;
+    @darkGreen: #198f19;
+    @lightBlue: #0ac;
+    @darkLightBlue: #1755B4;
+    @darkBlue: #006;
+    @bodyBackground: #333;
+    @menuBackground: #392a4e;
+    @borderMenu: solid #aaa 1px;
+    @gray: #888888;
+    @lightGray: #aaa;
+    @white: #dcdcdc;
+    @darkYellow: #929253;
+    @darkOrange: #b4811a;
+    @defaultRed: #af1b1b;
+    @defaultGreen: #1a991a;
+    @defaultOpacity: .8;
+    @selectedItem: 2px #caca38 solid;
+}
+
+.yellow-buttons{
+    background-color: #colors[@darkYellow];
+    color: #colors[@white];
+}
+
 #name-selection{
     div{
         width: 80%;

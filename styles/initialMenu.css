@@ -1,0 +1,60 @@
+@import 'base.css';
+.yellow-buttons {
+  background-color: #929253;
+  color: #dcdcdc;
+}
+#name-selection div {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+@media (max-width: 400px) {
+  #name-selection div {
+    width: 80%;
+  }
+}
+#nameInput {
+  width: 100%;
+}
+#confirm-name {
+  background-color: #929253;
+  color: #dcdcdc;
+  font-size: 1.5rem;
+}
+#breed-buttons,
+#class-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+#breed-buttons button,
+#class-buttons button {
+  background-color: #929253;
+  color: #dcdcdc;
+  font-size: 1.5rem;
+}
+#breed-buttons button {
+  padding: 2rem 0.5rem;
+}
+#close-nameInvalidation,
+#closeLoadStoped,
+#closeSave {
+  background-color: #929253;
+  color: #dcdcdc;
+  font-size: 1.5rem;
+}
+#newGameConfirmYes,
+#newGameConfirmNo {
+  color: #dcdcdc;
+  font-size: 1.5rem;
+  padding: 0.8rem;
+}
+#newGameConfirmYes {
+  background-color: #af1b1b;
+}
+#newGameConfirmNo {
+  background-color: #1a991a;
+}
