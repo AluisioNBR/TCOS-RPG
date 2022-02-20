@@ -1,13 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+import { useState } from 'react'
+
 import { Header } from './components/header.tsx'
+import { Main } from './components/main.tsx'
 import '../styles/styles.css'
 
 function TCOSBody(){
+    const [statusButtonVisibility, setStatusButtonVisibility] = useState('not-active')
+    
     return (
         <div>
-            <Header />
+            <Header statusButtonVisibility={statusButtonVisibility} />
+
+            <Main />
         </div>
     )
 }
