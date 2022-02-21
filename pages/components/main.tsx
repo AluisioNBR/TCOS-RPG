@@ -1,4 +1,4 @@
-import { GameMenu, StopSelection, StopLoad, NameSelection, NameSelectionInvalidation } from './main/gameMenu.tsx'
+import { GameMenu, StopSelection, StopLoad, NameSelection, NameSelectionInvalidation, BreedSelection, ClassSelection } from './main/gameMenu.tsx'
 
 function Main(){
 	return (
@@ -6,6 +6,11 @@ function Main(){
 				<GameMenu />
 				<StopSelection />
 				<StopLoad />
+
+				<NameSelection />
+				<NameSelectionInvalidation />
+				<BreedSelection/>
+				<ClassSelection/>
 			</main>
 		)
 }
